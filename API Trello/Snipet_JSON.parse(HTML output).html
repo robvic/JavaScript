@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Snipet - JSON.parse (HTML output)</title>
+<style></style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<!--<script src="https://api.trello.com/1/client.js?key=0dd3b025e7649540e13f71ec2ee16ef0"></script>-->
+<script src="https://trello.com/1/client.js?key=0dd3b025e7649540e13f71ec2ee16ef0"></script>
+</head>
+<body>
+<div id="update"></div>
+</body>
+<script>
+/*
+var authenticationSuccess = function() { console.log("Successful authentication"); };
+var authenticationFailure = function() { console.log("Failed authentication"); };
+
+Trello.authorize({
+  type: 'popup',
+  name: 'Getting Started Application',
+  scope: {
+    read: 'true',
+    write: 'true' },
+  expiration: 'never',
+  success: importarLista,
+  error: authenticationFailure
+});
+*/
+
+var importarLista = function(){
+	console.log("success");
+	var success = function(successMsg) { asyncOutput(successMsg);};
+	var error = function(errorMsg) { asyncOutput(errorMsg);};
+	var json;
+	var gmuds;
+
+	json = Trello.get('/lists/5423e2442fe1bb45da82f057/cards', success, error);
+
+	gmuds = JSON.parse(json);
+	var output = '<ul>';
+	for (var key in gmuds){
+		output += '<li>' + gmuds.desc + '</li>';
+	}
+	output += '</ul>';
+	document.getElementById('update').innerHTML = output;
+}
+
+
+</script>
+</html>
+

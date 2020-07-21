@@ -1,0 +1,12 @@
+{
+	"exemplo":[
+		{
+			"text":"Um",
+			"number":1
+		},
+		{
+			"text":"Dois",
+			"number":2
+		}
+	]
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script language="javascript" type="text/javascript">
+
+function readFile() {
+    var fso = new ActiveXObject('Scripting.FileSystemObject'),
+        iStream=fso.OpenTextFile("C:\testetxt.txt", 1, false);
+    while(!iStream.AtEndOfStream) {
+        document.body.innerHTML += iStream.ReadLine() + '<br/>';
+    }        
+    iStream.Close();
+}
+
+</script>
+</head>
+<body onload="readFile()">
+</body>
+</html>

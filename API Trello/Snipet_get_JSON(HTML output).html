@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Snipet - JSON.parse (HTML output)</title>
+<style></style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<!--<script src="https://api.trello.com/1/client.js?key=0dd3b025e7649540e13f71ec2ee16ef0"></script>-->
+<script src="https://trello.com/1/client.js?key=0dd3b025e7649540e13f71ec2ee16ef0"></script>
+</head>
+<body>
+<div id="update"></div>
+</body>
+<script>
+function getJSON(url) {
+        var resp ;
+        var xmlHttp ;
+
+        resp  = '' ;
+        xmlHttp = new XMLHttpRequest();
+
+        if(xmlHttp != null)
+        {
+            xmlHttp.open( "GET", url, false );
+            xmlHttp.send( null );
+            resp = xmlHttp.responseText;
+        }
+
+        return resp ;
+    }
+var gjson ;
+gjson = getJSON('https://api.trello.com/1//lists/5423e2442fe1bb45da82f057/cards?key=0dd3b025e7649540e13f71ec2ee16ef0&token=722f865725261d66fc25dbc19c3937e1ac2d142f0ed9f71f189edb5c3887ef54') ;
+var gmuds;
+gmuds = JSON.parse(gjson);
+
+	var output = '<ul>';
+	for (var key in gmuds){
+		output += '<li>' + gmuds[key].name + '</li>';
+	}
+	output += '</ul>';
+	document.getElementById('update').innerHTML = output;
+
+
+</script>
+</html>
+

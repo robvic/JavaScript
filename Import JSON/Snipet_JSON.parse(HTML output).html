@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Snipet - JSON.parse (HTML output)</title>
+<style></style>
+</head>
+<body>
+<div id="update"></div>
+</body>
+<script>
+// Exemplo funcionando apenas com o Firefox
+	var xmlhttp = new XMLHttpRequest(),
+		json;
+		
+	xmlhttp.open('GET','exemplo.json',true);
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.readyState == 4 && xmlhttp.status === 200){
+			json = JSON.parse(xmlhttp.responseText);
+			var output = '<ul>';
+			for (var key in json.exemplo){
+				output += '<li>' + json.exemplo[key].text + '</li>';
+			}
+			output += '</ul>';
+			document.getElementById('update').innerHTML = output;
+		}
+	};
+		
+	
+	xmlhttp.send();
+	
+</script>
+</html>
+
